@@ -2,6 +2,7 @@ import internal from 'stream';
 
 import { down, left, position, right, up } from './commands/actions';
 import { circle, rectangle, square } from './commands/drawing';
+import { printScreen } from './commands/print-screen';
 
 export const handler = (stream: internal.Duplex, command: string) => {
   const args = command.split(' ');
@@ -30,6 +31,9 @@ export const handler = (stream: internal.Duplex, command: string) => {
       break;
     case 'draw_square':
       square(Number(args[1]), stream);
+      break;
+    case 'prnt_scrn':
+      printScreen(stream);
       break;
   }
 };

@@ -7,7 +7,7 @@ export const circle = (radius: number, socket: internal.Duplex) => {
   socket.write(`draw_circle`);
   robot.mouseToggle('down');
 
-  for (let angle = 0; angle <= Math.PI * 2; angle += 0.01) {
+  for (let angle = 0; angle <= Math.PI * 2; angle += 0.02) {
     const x = mousePos.x + radius * Math.cos(angle);
     const y = mousePos.y + radius * Math.sin(angle);
     robot.moveMouse(x, y);
