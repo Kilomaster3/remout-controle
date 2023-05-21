@@ -21,4 +21,12 @@ server.on('connection', (socket: WebSocket) => {
   stream.on('data', (command) => {
     handler(stream, command);
   });
+
+  stream.on('close', () => {
+    console.log('Channel closed');
+  });
+});
+
+server.on('close', (socket: WebSocket) => {
+  socket.close();
 });
