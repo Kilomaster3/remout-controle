@@ -1,5 +1,7 @@
 import internal from 'stream';
+
 import { down, left, position, right, up } from './commands/actions';
+import { circle, rectangle, square } from './commands/drawing';
 
 export const handler = (stream: internal.Duplex, command: string) => {
   const args = command.split(' ');
@@ -19,6 +21,15 @@ export const handler = (stream: internal.Duplex, command: string) => {
       break;
     case 'mouse_position':
       position(stream);
+      break;
+    case 'draw_circle':
+      circle(Number(args[1]), stream);
+      break;
+    case 'draw_rectangle':
+      rectangle(Number(args[1]), Number(args[2]), stream);
+      break;
+    case 'draw_square':
+      square(Number(args[1]), stream);
       break;
   }
 };
